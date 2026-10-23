@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "Reanimated value prop repro",
+    "slug": "reanimated-value-prop-repro",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "ios": {
+      "bundleIdentifier": "com.anonymous.reanimated-value-prop-repro"
+    }
+  }
+}

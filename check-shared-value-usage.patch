@@ -1,0 +1,29 @@
+diff --git a/src/hook/useAnimatedStyleCommon.ts b/src/hook/useAnimatedStyleCommon.ts
+--- a/src/hook/useAnimatedStyleCommon.ts
++++ b/src/hook/useAnimatedStyleCommon.ts
+@@ -10,6 +10,7 @@
+   StyleUpdaterContainer,
+   Timestamp,
+ } from '../commonTypes';
++import { isSharedValue } from '../isSharedValue';
+ import { updateProps } from '../updateProps';
+ import type { ViewDescriptorsSet } from '../ViewDescriptorsSet';
+ import type { Descriptor } from './commonTypes';
+@@ -317,7 +318,7 @@
+   } else if (
+     typeof prop === 'object' &&
+     prop !== null &&
+-    prop.value === undefined
++    !isSharedValue(prop)
+   ) {
+     // if it's a nested object, run validation for all its props
+     for (const key of Object.keys(prop)) {
+@@ -327,7 +328,7 @@
+     currentKey !== undefined &&
+     typeof prop === 'object' &&
+     prop !== null &&
+-    prop.value !== undefined
++    isSharedValue(prop)
+   ) {
+     // if shared value is passed instead of its value, throw an error
+     throw new Error(
